@@ -4,6 +4,7 @@ import com.learn.bookApi.model.BookModel;
 import com.learn.bookApi.service.BookService;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -22,7 +23,7 @@ public class BookController {
     }
 
     @PostMapping
-    public BookModel postBook(@RequestBody BookModel bookModel){
+    public BookModel postBook( @RequestBody @Valid BookModel bookModel){
         return bookService.createBook(bookModel);
     }
 

@@ -3,6 +3,8 @@ package com.learn.bookApi.model;
 import lombok.Data;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 
 @Data
@@ -13,8 +15,12 @@ public class AuthorModel {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "authorGenerator")
     private long id;
+
+    @NotBlank
     private String fullName;
+    @NotBlank
     private String nationality;
+    @NotBlank
     private LocalDate bithDate;
 
 }

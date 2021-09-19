@@ -6,6 +6,7 @@ import com.learn.bookApi.repository.BookRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class BookService {
@@ -21,7 +22,7 @@ public class BookService {
     }
 
     public List<BookModel> getAllBook() {
-        return bookRepository.findAll();
+        return Optional.of(bookRepository.findAll()).orElseThrow(() -> new BookNotFoundException("Books not found!"));
     }
 
     public BookModel findBookByName(String name) {

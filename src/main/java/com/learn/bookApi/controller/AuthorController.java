@@ -4,6 +4,7 @@ import com.learn.bookApi.model.AuthorModel;
 import com.learn.bookApi.service.AuthorService;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -12,7 +13,7 @@ public class AuthorController {
 
     private final AuthorService authorService;
 
-    public AuthorController(AuthorService authorService) {
+    public AuthorController( @Valid AuthorService authorService) {
         this.authorService = authorService;
     }
 
@@ -22,7 +23,7 @@ public class AuthorController {
     }
 
     @PostMapping
-    public AuthorModel postAuthor(@RequestBody AuthorModel authorModel){
+    public AuthorModel postAuthor(@RequestBody @Valid AuthorModel authorModel){
         return authorService.createAuthor(authorModel);
     }
 }
