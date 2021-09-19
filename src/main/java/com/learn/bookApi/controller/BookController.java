@@ -25,4 +25,9 @@ public class BookController {
     public BookModel postBook(@RequestBody BookModel bookModel){
         return bookService.createBook(bookModel);
     }
+
+    @GetMapping("/{name}")
+    public BookModel getOneBookByName(@PathVariable String name){
+        return bookService.findBookByName(name);
+    }
 }

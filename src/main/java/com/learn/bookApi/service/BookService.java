@@ -1,5 +1,6 @@
 package com.learn.bookApi.service;
 
+import com.learn.bookApi.exceptions.BookNotFoundException;
 import com.learn.bookApi.model.BookModel;
 import com.learn.bookApi.repository.BookRepository;
 import org.springframework.stereotype.Service;
@@ -21,5 +22,9 @@ public class BookService {
 
     public List<BookModel> getAllBook() {
         return bookRepository.findAll();
+    }
+
+    public BookModel findBookByName(String name) {
+        return bookRepository.findByTitle(name).orElseThrow(() -> new BookNotFoundException("Not found book with this name " + name));
     }
 }
