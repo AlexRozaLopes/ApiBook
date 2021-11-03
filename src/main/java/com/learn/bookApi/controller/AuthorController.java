@@ -13,7 +13,7 @@ public class AuthorController {
 
     private final AuthorService authorService;
 
-    public AuthorController( @Valid AuthorService authorService) {
+    public AuthorController(AuthorService authorService) {
         this.authorService = authorService;
     }
 
