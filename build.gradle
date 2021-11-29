@@ -2,11 +2,33 @@ plugins {
 	id 'org.springframework.boot' version '2.5.4'
 	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
 	id 'java'
+	id "java-library"
+	id "maven-publish"
+	id "io.github.gradle-nexus.publish-plugin" version "1.0.0"
 }
 
 group = 'com.learn'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '11'
+
+publishing {
+	publications {
+		mavenJava(MavenPublication) {
+			from(components.java)
+		}
+	}
+}
+
+nexusPublishing {
+	repositories {
+		myNexus {
+			allowInsecureProtocol = true
+			nexusUrl = uri("http://localhost:8081")
+			snapshotRepositoryUrl = uri("http://localhost:8081/repository/maven-snapshots/")
+			username = "admin" // defaults to project.properties["myNexusUsername"]
+			password = "64ee6434-1e74-4517-bd0b-596f6c7e1a37" // defaults to project.properties["myNexusPassword"]
+		}
+	}
+}
 
 configurations {
 	compileOnly {

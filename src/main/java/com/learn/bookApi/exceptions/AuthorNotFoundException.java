@@ -1,7 +1,10 @@
 package com.learn.bookApi.exceptions;
 
 public class AuthorNotFoundException extends RuntimeException {
-    public AuthorNotFoundException(String s) {
+
+	private static final long serialVersionUID = 1L;
+
+	public AuthorNotFoundException(String s) {
         super(s);
     }
 }
