@@ -1,16 +1,24 @@
 pipeline {
     agent any
 
+    tools {
+        Maven 'maven_3.8.4'
+    }
     stages {
-        stage("Build") {
+        stage("Build jar file") {
             steps {
                 echo 'building the application'
+                sh 'mvn package'
             }
         }
 
-        stage("Test") {
+        stage("Build Docker image") {
             steps {
                 echo 'testing the application'
+                withCredentials([usernamePassword(credentialsId: 'docker-hub-repo', usernameVariable: USER, passwordVariable: PASS)])
+                sh 'docker build -t docker push alexroza/api_book:pipeline-1.0 .'
+                sh "echo $PASS | docker login -u $USER --password-stdin"
+                sh 'docker push alexroza/api_book:pipeline-1.0'
             }
         }
 
