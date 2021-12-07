@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     tools {
-        gradel 'Gradel_7.3'
+        gradle 'Gradle_7.3'
     }
     stages {
         stage("Build jar file") {
