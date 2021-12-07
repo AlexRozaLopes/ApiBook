@@ -2,13 +2,13 @@ pipeline {
     agent any
 
     tools {
-        maven 'maven_3.8.4'
+        gradel 'Gradel_7.3'
     }
     stages {
         stage("Build jar file") {
             steps {
                 echo 'building the application'
-                sh 'mvn package'
+                sh 'gradle build'
             }
         }
 
