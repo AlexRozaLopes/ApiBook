@@ -16,7 +16,7 @@ pipeline {
             steps {
                 echo 'testing the application'
                 withCredentials([usernamePassword(credentialsId: 'docker-hub-repo', passwordVariable: 'PASS', usernameVariable: 'USER')]){
-                    sh 'sudo docker build -t alexroza/api_book:pipeline-1.0 .'
+                    sh ' docker build -t alexroza/api_book:pipeline-1.0 .'
                                     sh "echo $PASS | docker login -u $USER --password-stdin"
                                     sh 'docker push alexroza/api_book:pipeline-1.0'
                 }
