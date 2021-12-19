@@ -1,4 +1,4 @@
-version: 3.8
+version: "3.8"
 services:
   my-spring-app:
     image: alexroza/api_book:pipeline-1.0
