@@ -4,6 +4,7 @@ import lombok.Data;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 
 
@@ -22,7 +23,7 @@ public class AuthorModel {
     private String fullName;
     @NotBlank
     private String nationality;
-    @NotBlank
+    @NotNull
     private LocalDate birthDate;
 
 }

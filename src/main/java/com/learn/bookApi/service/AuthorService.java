@@ -24,4 +24,8 @@ public class AuthorService {
     public AuthorModel createAuthor(AuthorModel authorModel) {
         return authorRepository.save(authorModel);
     }
+
+    public AuthorModel findByName(String name) {
+        return authorRepository.findByFullName(name).orElseThrow(() -> new AuthorNotFoundException("Dont have any Author in this API yet"));
+    }
 }

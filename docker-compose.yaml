@@ -1,9 +1,5 @@
 version: "3.8"
 services:
-  my-spring-app:
-    image: alexroza/api_book:pipeline-1.0
-    ports:
-      - 8088:8088
   postgres:
     image: postgres:13
     ports:
@@ -11,3 +7,7 @@ services:
     environment:
       - POSTGRES_PASSWORD:password
       - POSTGRES_DB:apibook
+  my-spring-app:
+    image: alexroza/api_book:pipeline-1.0
+    ports:
+      - 8088:8088

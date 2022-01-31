@@ -7,6 +7,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 
 @Entity
@@ -21,7 +22,7 @@ public class BookModel {
     private Long id;
     @NotBlank
     private String title;
-    @NotBlank
+    @NotNull
     private int numberOfPages;
     @NotBlank
     private String genre;
